@@ -1,0 +1,18 @@
+html {
+   background-color: #F9B8BE;
+   /* background: linear-gradient(to right, #F9B8BE, #d2d2d2); */
+}
+
+body {
+   background-color: #F9B8BE;
+   font-family: 'Aldrich', sans-serif;
+   /* background: linear-gradient(to right, #F9B8BE, #d2d2d2); */
+}
+
+#grad {
+   background: linear-gradient(to right, #2E3B3E, #7899a0); /* Standard syntax */
+ }
+
+#header {
+   color: #2E3B3E;
+ }
