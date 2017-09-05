@@ -19,8 +19,19 @@ function displayGIFs() {
     // Creating a div to hold the GIF
     var gifDiv = $("<div class='topic'>");
 
+    // Retrieving the GIF
+    var gifImage = response.data[0].images.fixed_height_still.url;
+    console.log(response.data[0].images.fixed_height_still.url);
+
+    // Creating an element to hold the GIF
+    var gifDisplay = $("<img>").attr("src", gifImage);
+
+    // Append the GIF
+    gifDiv.append(gifDisplay);
+
     // Storing the rating data
-    var rating = response.rating;
+    var rating = response.data[0].rating;
+    console.log(response.data[0].rating);
 
     // Creating an element to display rating
     var elem1 = $("<p>").text("Rating: " + rating);
@@ -64,7 +75,7 @@ function renderButtons() {
 
 // This function handles events where a topic button is clicked
 $("#add-topic").on("click", function(event) {
-  
+
   event.preventDefault();
 
   // This line grabs the input from the text box
@@ -79,7 +90,7 @@ $("#add-topic").on("click", function(event) {
 });
 
 // Add a click event listener to all elements with class "topic"
-$(document).on("click", ".topics", displayGIFs);
+$(document).on("click", ".topic", displayGIFs);
 
 // Call renderButtons function to display the initial buttons
 renderButtons();

@@ -9,4 +9,8 @@ body {
 
 #header {
    color: #2E3B3E;
- }
+}
+
+button, div, form, input {
+   margin: 10px;
+}
