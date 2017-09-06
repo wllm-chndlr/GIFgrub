@@ -1,16 +1,28 @@
 html {
-   background-color: #F9B8BE;
+   background-color: #4d5563;
 }
 
 body {
-   background-color: #F9B8BE;
+   color: #fff;
+   background-color: #4d5563;
    font-family: 'Aldrich', sans-serif;
 }
 
 #header {
-   color: #2E3B3E;
+   color: #ff8623;
 }
 
 button, div, form, input {
    margin: 10px;
+}
+
+.btn-info, .btn-success {
+   /* color: #4d5563;
+   background-color: #08d6a9; */
+   font-size: 16px;
+   width: 100px;
+}
+
+#grub-input {
+   color: #4d5563;
 }

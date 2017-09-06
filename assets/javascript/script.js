@@ -1,46 +1,62 @@
 // Array of GIF topics
 
-var topics = ["pizza", "tacos", "beer", "nachos", "BBQ", "cheese"];
+var comida = ["pizza", "tacos", "queso", "nachos", "BBQ", "cheese", "sausage"];
 
 // displayGIFs function re-renders the HTML to display the appropriate content
 
 function displayGIFs() {
 
-  var topic = $(this).attr("data-name");
-  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=b4b3b21c358b416d81cfdb99df5b34fd&limit=10";
+  $("#gifs-view").empty();
 
-  // Create AJAX call for specific movie button being clicked
+  var grub = $(this).attr("data-name");
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + grub + "&api_key=b4b3b21c358b416d81cfdb99df5b34fd&limit=10";
+  var clickedOnGif = false;
+
+  // Create AJAX call for specific grub button being clicked
 
   $.ajax({
     url: queryURL,
     method: "GET"
   }).done(function(response) {
 
-    // Creating a div to hold the GIF
-    var gifDiv = $("<div class='topic'>");
+    for (var j = 0; j < 10; j++) {
 
-    // Retrieving the GIF
-    var gifImage = response.data[0].images.fixed_height_still.url;
-    console.log(response.data[0].images.fixed_height_still.url);
+      // Creating a div to hold the GIFs
+      var gifDiv = $("<div class='grub'>");
 
-    // Creating an element to hold the GIF
-    var gifDisplay = $("<img>").attr("src", gifImage);
+      // Retrieving the GIFs
+      var gifImage = response.data[j].images.fixed_height_still.url;
+      var gifAction = response.data[j].url;
 
-    // Append the GIF
-    gifDiv.append(gifDisplay);
+      // Creating an element to hold the GIFs
+      var gifDisplay = $("<img>").attr("src", gifImage);
+      // var gifDisplay = $("<img>").attr("src", gifAction);
 
-    // Storing the rating data
-    var rating = response.data[0].rating;
-    console.log(response.data[0].rating);
+      // Append the GIF
+      gifDiv.append(gifDisplay);
 
-    // Creating an element to display rating
-    var elem1 = $("<p>").text("Rating: " + rating);
+      // Storing the rating data
+      var rating = response.data[j].rating;
 
-    // Displaying the rating
-    gifDiv.append(elem1);
+      // Creating an element to display rating
+      var elem1 = $("<p>").text("Rating: " + rating);
 
-    // Putting the GIF div above the previous GIFs
-    $("#gifs-view").prepend(gifDiv);
+      // Displaying the rating
+      gifDiv.append(elem1);
+
+      // Putting the GIF div above the previous GIFs
+      $("#gifs-view").prepend(gifDiv);
+
+      // $("<img>").click(function() {
+      //   // $(gifImage).replaceWith(gifAction);
+      //   gifDisplay = $("<img>").attr("src", gifAction);
+      // });
+
+      $("<img>").wrap($('<a>',{
+        href: 'response.data[j].url'
+      }));
+
+    }
 
   });
 
@@ -48,23 +64,23 @@ function displayGIFs() {
 
 function renderButtons() {
 
-  // Deleting existing movies before adding new movies
+  // Delete existing movies before adding new movies
   $("#buttons-view").empty();
 
-  // Looping through the array of topics
-  for (var i = 0; i < topics.length; i++) {
+  // Looping through the array of comida
+  for (var i = 0; i < comida.length; i++) {
 
-    // Generate buttons for each topic in the array
+    // Generate buttons for each grub in the array
     var newBtn = $("<button>");
 
-    // Add a class of topic to our button
-    newBtn.addClass("topic");
+    // Add a class of grub to our button
+    newBtn.addClass("grub btn-info");
 
     // Add a data attribute
-    newBtn.attr("data-name", topics[i]);
+    newBtn.attr("data-name", comida[i]);
 
     // Provide the initial button text
-    newBtn.text(topics[i]);
+    newBtn.text(comida[i]);
 
     //Add button to the buttons-view div
     $("#buttons-view").append(newBtn);
@@ -73,24 +89,24 @@ function renderButtons() {
 
 }
 
-// This function handles events where a topic button is clicked
-$("#add-topic").on("click", function(event) {
+// This function handles events where a grub button is clicked
+$("#add-grub").on("click", function(event) {
 
   event.preventDefault();
 
   // This line grabs the input from the text box
-  var topic = $("#topic-input").val().trim();
+  var grub = $("#grub-input").val().trim();
 
-  // Add topic from text box to array
-  topics.push(topic);
+  // Add grub from text box to array
+  comida.push(grub);
 
   // Call renderButtons
   renderButtons();
 
 });
 
-// Add a click event listener to all elements with class "topic"
-$(document).on("click", ".topic", displayGIFs);
+// Add a click event listener to all elements with class "grub"
+$(document).on("click", ".grub", displayGIFs);
 
 // Call renderButtons function to display the initial buttons
 renderButtons();

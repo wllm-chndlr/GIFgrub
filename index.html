@@ -22,26 +22,46 @@
 <body>
    
    <div class="container">
-      
+
       <div class="page-header">
-         <h1 id="header">GIFtastic <small>lotta gifs</small></h1>
+         <h1 id="header">GIFtastic grub <small>lotta eats</small></h1>
       </div>
 
-      <!-- GIFs will display here -->
-      <div id="gifs-view"></div>
+      <div class="row">
 
-      <!-- Rendered buttons will display here -->
-      <div id="buttons-view"></div>
+         <div class="col-md-12">
 
-      <form id="topic-form">
+            <!-- Rendered buttons will display here -->
+            <div id="buttons-view"></div>
+         
+         </div>
 
-         <label for="topic-input">Add a topic</label>
-         <input type="text" id="topic-input"><br>
+      </div>
 
-         <!-- Button adds new GIF -->
-         <input id="add-topic" type="submit" value="Add a topic">
-      
-      </form>
+      <div class="row">
+
+         <div class="col-md-8">
+
+            <!-- GIFs will display here -->
+            <div id="gifs-view"></div>
+
+         </div>
+
+         <div class="col-md-4">
+
+            <form id="grub-form">
+
+            <label for="grub-input">Add some grub</label>
+            <input type="text" id="grub-input"><br>
+
+            <!-- Button adds new GIF -->
+            <input id="add-grub" class="btn-success" type="submit" value="submit">
+
+            </form>
+
+         </div>
+
+      </div>
 
    </div>
    
