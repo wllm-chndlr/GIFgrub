@@ -1,6 +1,6 @@
 // Array of GIF topics
 
-var comida = ["pizza", "tacos", "queso", "nachos", "BBQ", "cheese", "sausage"];
+var comida = ["pizza", "tacos", "sandwich", "queso", "nachos", "BBQ", "cheese", "sausage", "cereal"];
 
 // displayGIFs function re-renders the HTML to display the appropriate content
 
@@ -10,7 +10,7 @@ function displayGIFs() {
 
   var grub = $(this).attr("data-name");
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + grub + "&api_key=b4b3b21c358b416d81cfdb99df5b34fd&limit=10";
-  var clickedOnGif = false;
+  // var clickedOnGif = false;
 
   // Create AJAX call for specific grub button being clicked
 
@@ -22,25 +22,23 @@ function displayGIFs() {
     for (var j = 0; j < 10; j++) {
 
       // Creating a div to hold the GIFs
-      var gifDiv = $("<div class='grub'>");
+      var gifDiv = $("<div>");
 
       // Retrieving the GIFs
       var gifImage = response.data[j].images.fixed_height_still.url;
-      var gifAction = response.data[j].url;
+      var gifAction = response.data[j].images.fixed_width.url;
 
       // Creating an element to hold the GIFs
-      var gifDisplay = $("<img>").attr("src", gifImage);
-      // var gifDisplay = $("<img>").attr("src", gifAction);
+      var gifDisplay = $("<img class='static'>").attr("src", gifImage);
+
 
       // Append the GIF
       gifDiv.append(gifDisplay);
 
       // Storing the rating data
       var rating = response.data[j].rating;
-
       // Creating an element to display rating
       var elem1 = $("<p>").text("Rating: " + rating);
-
       // Displaying the rating
       gifDiv.append(elem1);
 
@@ -52,9 +50,17 @@ function displayGIFs() {
       //   gifDisplay = $("<img>").attr("src", gifAction);
       // });
 
-      $("<img>").wrap($('<a>',{
-        href: 'response.data[j].url'
-      }));
+      // $("<img>").wrap($('<a>',{
+      //   href: 'response.data[j].url'
+      // }));
+
+      $('.static').click(function(e) {
+        e.preventDefault();
+        $(this).attr('src', gifAction); 
+      });
+
+
+      
 
     }
 
@@ -70,7 +76,7 @@ function renderButtons() {
   // Looping through the array of comida
   for (var i = 0; i < comida.length; i++) {
 
-    // Generate buttons for each grub in the array
+    // Generate buttons for all the grub in the array
     var newBtn = $("<button>");
 
     // Add a class of grub to our button
