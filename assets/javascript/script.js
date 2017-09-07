@@ -30,7 +30,8 @@ function displayGIFs() {
 
       // Creating an element to hold the GIFs
       var gifDisplay = $("<img class='static'>").attr("src", gifImage);
-
+      // var gifDisplay = $("<img class='gif'>").attr("src", gifAction);
+      // $('.gif').gifplayer();
 
       // Append the GIF
       gifDiv.append(gifDisplay);
@@ -54,13 +55,33 @@ function displayGIFs() {
       //   href: 'response.data[j].url'
       // }));
 
-      $('.static').click(function(e) {
-        e.preventDefault();
-        $(this).attr('src', gifAction); 
+      $('.static').click(function() {
+        var src = $('.static').attr("src");
+        // e.preventDefault();
+        // $(this).attr('src', gifAction).addClass('moving');
+        $(this).attr('src', src.replace(gifImage, gifAction)).addClass('moving');
+        // $(this).attr('src', gifImage);
+        var src2 = $('.moving').attr("src");
+        $('.moving', this).attr('src', src2.replace(gifAction, gifImage));
       });
 
 
-      
+
+
+      // $('.moving').click(function() {
+      //   $(this).attr('src', gifImage);
+      // })
+
+      // $(function() {
+      //   $(".static").click(
+      //       function() {
+      //           $(this).attr("src", response.data[j].images.fixed_width.url);
+      //       },
+      //       function() {
+      //           $(this).attr("src", response.data[j].images.fixed_height_still.url);
+      //       }
+      //   );
+      // });
 
     }
 
