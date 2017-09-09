@@ -10,10 +10,8 @@ function displayGIFs() {
 
   var grub = $(this).attr("data-name");
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + grub + "&api_key=b4b3b21c358b416d81cfdb99df5b34fd&limit=10";
-  var state = $(thsi).attr("data-state");
 
   // Create AJAX call for specific grub button being clicked
-
   $.ajax({
     url: queryURL,
     method: "GET"
@@ -26,18 +24,20 @@ function displayGIFs() {
 
       // Retrieving the GIFs
       var gifImage = response.data[j].images.fixed_height_still.url;
-      var gifAction = response.data[i].url;
+      var gifAction = response.data[j].url;
+      // console.log(response.data[j].url);
 
       // Creating an element to hold the GIFs
-      // var gifDisplay = $("<img>").attr("src", gifImage);
+
+      // var gifDisplay = $("<img class='epicGIF'>").attr("src", gifImage);
+
       var gifDisplay = $("<img>").attr({
-        src: gifImage,
-        data-still: gifImage,
-        data-animate: gifAction,
-        data-state: "still",
-        class: "gif"
-      });
-      
+        "src": gifImage,
+        "data-still": gifImage,
+        "data-animate": gifAction,
+        "data-state": "still",
+        "class": "epicGIF"
+        });
 
       // Append the GIF
       gifDiv.append(gifDisplay);
@@ -58,6 +58,7 @@ function displayGIFs() {
 
 }
 
+// This function renders buttons for all the items in the array
 function renderButtons() {
 
   // Delete existing comida before adding new comida
@@ -85,6 +86,21 @@ function renderButtons() {
 
 }
 
+function changeState() {
+  // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+  var state = $(this).attr("data-state");
+  // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+  // Then, set the image's data-state to animate
+  // Else set src to the data-still value
+  if (state === "still") {
+    $(this).attr("src", $(this).attr("data-animate"));
+    $(this).attr("data-state", "animate");
+  } else {
+    $(this).attr("src", $(this).attr("data-still"));
+    $(this).attr("data-state", "still");
+  }
+}
+
 // This function handles events where a grub button is clicked
 $("#add-grub").on("click", function(event) {
 
@@ -101,8 +117,30 @@ $("#add-grub").on("click", function(event) {
 
 });
 
+
+// This function starts/stops GIFs on click
+// $(".epicGIF").on("click", function() {
+// $(document.body).on("click", ".epicGIF", function() {
+//   console.log(this);
+//   // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+//   var state = $(this).attr("data-state");
+//   // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+//   // Then, set the image's data-state to animate
+//   // Else set src to the data-still value
+//   if (state === "still") {
+//     $(this).attr("src", $(this).attr("data-animate"));
+//     $(this).attr("data-state", "animate");
+//   } else {
+//     $(this).attr("src", $(this).attr("data-still"));
+//     $(this).attr("data-state", "still");
+//   }
+// });
+
+
 // Add a click event listener to all elements with class "grub"
 $(document).on("click", ".grub", displayGIFs);
+
+$(document).on("click", ".epicGIF", changeState);
 
 // Call renderButtons function to display the initial buttons
 renderButtons();
