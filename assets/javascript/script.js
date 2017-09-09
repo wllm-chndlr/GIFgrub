@@ -10,6 +10,7 @@ function displayGIFs() {
 
   var grub = $(this).attr("data-name");
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + grub + "&api_key=b4b3b21c358b416d81cfdb99df5b34fd&limit=10";
+  var state = $(thsi).attr("data-state");
 
   // Create AJAX call for specific grub button being clicked
 
@@ -24,12 +25,19 @@ function displayGIFs() {
       var gifDiv = $("<div>");
 
       // Retrieving the GIFs
-      var gifImage = response.data[j].images.fixed_width.url;
-      // var gifImage = response.data[j].images.fixed_height_still.url;
-      // var gifAction = response.data[j].images.fixed_width.url;
+      var gifImage = response.data[j].images.fixed_height_still.url;
+      var gifAction = response.data[i].url;
 
       // Creating an element to hold the GIFs
-      var gifDisplay = $("<img class='static'>").attr("src", gifImage);
+      // var gifDisplay = $("<img>").attr("src", gifImage);
+      var gifDisplay = $("<img>").attr({
+        src: gifImage,
+        data-still: gifImage,
+        data-animate: gifAction,
+        data-state: "still",
+        class: "gif"
+      });
+      
 
       // Append the GIF
       gifDiv.append(gifDisplay);
