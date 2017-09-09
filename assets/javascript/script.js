@@ -10,7 +10,6 @@ function displayGIFs() {
 
   var grub = $(this).attr("data-name");
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + grub + "&api_key=b4b3b21c358b416d81cfdb99df5b34fd&limit=10";
-  // var clickedOnGif = false;
 
   // Create AJAX call for specific grub button being clicked
 
@@ -25,13 +24,12 @@ function displayGIFs() {
       var gifDiv = $("<div>");
 
       // Retrieving the GIFs
-      var gifImage = response.data[j].images.fixed_height_still.url;
-      var gifAction = response.data[j].images.fixed_width.url;
+      var gifImage = response.data[j].images.fixed_width.url;
+      // var gifImage = response.data[j].images.fixed_height_still.url;
+      // var gifAction = response.data[j].images.fixed_width.url;
 
       // Creating an element to hold the GIFs
       var gifDisplay = $("<img class='static'>").attr("src", gifImage);
-      // var gifDisplay = $("<img class='gif'>").attr("src", gifAction);
-      // $('.gif').gifplayer();
 
       // Append the GIF
       gifDiv.append(gifDisplay);
@@ -46,43 +44,6 @@ function displayGIFs() {
       // Putting the GIF div above the previous GIFs
       $("#gifs-view").prepend(gifDiv);
 
-      // $("<img>").click(function() {
-      //   // $(gifImage).replaceWith(gifAction);
-      //   gifDisplay = $("<img>").attr("src", gifAction);
-      // });
-
-      // $("<img>").wrap($('<a>',{
-      //   href: 'response.data[j].url'
-      // }));
-
-      $('.static').click(function() {
-        var src = $('.static').attr("src");
-        // e.preventDefault();
-        // $(this).attr('src', gifAction).addClass('moving');
-        $(this).attr('src', src.replace(gifImage, gifAction)).addClass('moving');
-        // $(this).attr('src', gifImage);
-        var src2 = $('.moving').attr("src");
-        $('.moving', this).attr('src', src2.replace(gifAction, gifImage));
-      });
-
-
-
-
-      // $('.moving').click(function() {
-      //   $(this).attr('src', gifImage);
-      // })
-
-      // $(function() {
-      //   $(".static").click(
-      //       function() {
-      //           $(this).attr("src", response.data[j].images.fixed_width.url);
-      //       },
-      //       function() {
-      //           $(this).attr("src", response.data[j].images.fixed_height_still.url);
-      //       }
-      //   );
-      // });
-
     }
 
   });
@@ -91,7 +52,7 @@ function displayGIFs() {
 
 function renderButtons() {
 
-  // Delete existing movies before adding new movies
+  // Delete existing comida before adding new comida
   $("#buttons-view").empty();
 
   // Looping through the array of comida
