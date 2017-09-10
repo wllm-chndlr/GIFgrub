@@ -24,3 +24,16 @@ button, div, form, input {
 #grub-input {
    color: #4d5563;
 }
+
+form#grub-form {
+   float: right;
+}
+
+#add-grub {
+   width: 150px;
+   font-size: 13.5px;
+}
+
+p {
+   margin-top: 10px;
+}

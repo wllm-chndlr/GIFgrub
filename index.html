@@ -6,7 +6,7 @@
    
    <meta charset="UTF-8">
    
-   <title>GIFtastic</title>
+   <title>GIFgrub</title>
    
    <!-- link to Bootstrap -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -24,12 +24,12 @@
    <div class="container">
 
       <div class="page-header">
-         <h1 id="header">GIFtastic grub <small>lotta eats</small></h1>
+         <h1 id="header">GIFgrub <small>lotta eats</small></h1>
       </div>
 
       <div class="row">
 
-         <div class="col-md-12">
+         <div class="col-md-12 btns">
 
             <!-- Rendered buttons will display here -->
             <div id="buttons-view"></div>
@@ -40,28 +40,34 @@
 
       <div class="row">
 
-         <div class="col-md-8">
-
-            <!-- GIFs will display here -->
-            <div id="gifs-view"></div>
-
-         </div>
-
-         <div class="col-md-4">
+         <div class="col-md-12">
 
             <form id="grub-form">
 
-            <label for="grub-input">Add some grub</label>
-            <input type="text" id="grub-input"><br>
+            <label for="grub-input"></label>
+            <input type="text" id="grub-input">
 
             <!-- Button adds new GIF -->
-            <input id="add-grub" class="btn-success" type="submit" value="submit">
+            <input id="add-grub" class="btn-success" type="submit" value="add more grub">
 
             </form>
 
          </div>
 
       </div>
+
+      <div class="row">
+
+         <div class="col-md-12">
+
+            <!-- GIFs will display here -->
+            <div id="gifs-view"></div>
+
+         </div>
+
+      </div>
+
+
 
    </div>
    

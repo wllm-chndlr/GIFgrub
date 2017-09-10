@@ -1,6 +1,6 @@
 // Array of GIF topics
 
-var comida = ["pizza", "tacos", "sandwich", "queso", "nachos", "BBQ", "cheese", "sausage", "cereal"];
+var comida = ["pizza", "bacon", "tacos", "sandwich", "queso", "nachos", "BBQ", "cheese", "sausage", "cereal"];
 
 // displayGIFs function re-renders the HTML to display the appropriate content
 
@@ -20,12 +20,11 @@ function displayGIFs() {
     for (var j = 0; j < 10; j++) {
 
       // Creating a div to hold the GIFs
-      var gifDiv = $("<div>");
+      var gifDiv = $("<div class='col-md-5 rect'>");
 
       // Retrieving the GIFs
       var gifImage = response.data[j].images.fixed_height_still.url;
       var gifAction = response.data[j].url;
-      // console.log(response.data[j].url);
 
       // Creating an element to hold the GIFs
 
@@ -45,7 +44,7 @@ function displayGIFs() {
       // Storing the rating data
       var rating = response.data[j].rating;
       // Creating an element to display rating
-      var elem1 = $("<p>").text("Rating: " + rating);
+      var elem1 = $("<p>").text("Rating: " + rating.toUpperCase());
       // Displaying the rating
       gifDiv.append(elem1);
 
@@ -86,7 +85,9 @@ function renderButtons() {
 
 }
 
+// This function starts/stops GIFs on click
 function changeState() {
+  console.log(this);
   // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
   var state = $(this).attr("data-state");
   // If the clicked image's state is still, update its src attribute to what its data-animate value is.
@@ -99,6 +100,7 @@ function changeState() {
     $(this).attr("src", $(this).attr("data-still"));
     $(this).attr("data-state", "still");
   }
+
 }
 
 // This function handles events where a grub button is clicked
@@ -116,26 +118,6 @@ $("#add-grub").on("click", function(event) {
   renderButtons();
 
 });
-
-
-// This function starts/stops GIFs on click
-// $(".epicGIF").on("click", function() {
-// $(document.body).on("click", ".epicGIF", function() {
-//   console.log(this);
-//   // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
-//   var state = $(this).attr("data-state");
-//   // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-//   // Then, set the image's data-state to animate
-//   // Else set src to the data-still value
-//   if (state === "still") {
-//     $(this).attr("src", $(this).attr("data-animate"));
-//     $(this).attr("data-state", "animate");
-//   } else {
-//     $(this).attr("src", $(this).attr("data-still"));
-//     $(this).attr("data-state", "still");
-//   }
-// });
-
 
 // Add a click event listener to all elements with class "grub"
 $(document).on("click", ".grub", displayGIFs);
