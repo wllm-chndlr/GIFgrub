@@ -1,4 +1,4 @@
-// Array of GIF topics
+// Array of different foods
 
 var comida = ["pizza", "bacon", "tacos", "sandwich", "queso", "nachos", "BBQ", "cheese", "sausage"];
 
@@ -53,11 +53,7 @@ function displayGIFs() {
       var gifImage = response.data[j].images.fixed_height_still.url;
       var gifAction = response.data[j].images.fixed_height.url;
       
-
       // Creating an element to hold the GIFs
-
-      // var gifDisplay = $("<img class='epicGIF'>").attr("src", gifImage);
-
       var gifDisplay = $("<img>").attr({
         "src": gifImage,
         "data-still": gifImage,
@@ -71,8 +67,10 @@ function displayGIFs() {
 
       // Storing the rating data
       var rating = response.data[j].rating;
+
       // Creating an element to display rating
       var elem1 = $("<p>").text("Rating: " + rating.toUpperCase());
+
       // Displaying the rating
       gifDiv.append(elem1);
 
@@ -90,8 +88,9 @@ function changeState() {
 
   // Grab the data-state of clicked image
   var state = $(this).attr("data-state");
-  // If the clicked image's state is still, update its src attribute to what its data-animate value is. Then, set the image's data-state to animate
-  // Else set src to the data-still value
+
+  // If the clicked image's state is still, update its src attribute to what its data-animate value is. Then, set the image's data-state to animate.
+  // Else set src to the data-still value.
   if (state === "still") {
     $(this).attr("src", $(this).attr("data-animate"));
     $(this).attr("data-state", "animate");
@@ -121,6 +120,7 @@ $("#add-grub").on("click", function(event) {
   // Call renderButtons
   renderButtons();
 
+  // Clear input box after user input submitted
   $("#grub-input").val("");
 
 });
