@@ -1,5 +1,4 @@
 // Array of different foods
-
 var comida = ["pizza", "bacon", "tacos", "sandwich", "queso", "nachos", "BBQ", "cheese", "sausage"];
 
 // This function renders buttons for all the items in the array
@@ -33,6 +32,7 @@ function renderButtons() {
 // This function displays GIFs and ratings based on button clicked
 function displayGIFs() {
   
+  // Empty gifs-view div before dynamically adding new GIFs
   $("#gifs-view").empty();
 
   var grub = $(this).attr("data-name");
@@ -104,16 +104,17 @@ function changeState() {
 // This function grabs user input to create new button
 $("#add-grub").on("click", function(event) {
 
+  // Prevent page from reloading upon user submit
   event.preventDefault();
 
   // This line grabs the input from the text box
   var grub = $("#grub-input").val().trim();
 
+  // Check length of user input
   var inputLength = grub.length;
-  console.log(inputLength);
 
+  // If user input not blank, add grub from text box to array
   if (inputLength > 0) {
-    // Add grub from text box to array
     comida.push(grub);
   };
 
