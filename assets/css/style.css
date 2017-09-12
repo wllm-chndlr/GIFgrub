@@ -37,3 +37,25 @@ form#grub-form {
 p {
    margin-top: 10px;
 }
+
+.footer {
+	height: 50px;
+	background-color: transparent;
+	color: #fff;
+	width: 100%;
+	text-align: right;
+	font-size: 12px;
+   padding-top: 15px;
+   padding-right: 25px;
+   /* opacity: 0.8; */
+}
+
+a, a:hover {
+   text-decoration: none;
+   text-decoration-line: none;
+   color: #ff8623;
+}
+
+.epicGIF:hover {
+   opacity: 0.8;
+}
