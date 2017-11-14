@@ -21,8 +21,23 @@ button, div, form, input {
    width: 100px;
 }
 
-#grub-input {
+.btn-warning {
+  width: 150px;
+  background-color: #3C4553;
+  border: none;
+  margin-right: 20px;
+}
+
+#grub-input, .modal-content {
    color: #4d5563;
+}
+
+#work {
+  float:right;
+}
+
+.modal-content {
+  padding: 20px;
 }
 
 form#grub-form {
