@@ -6,6 +6,6 @@
 
 #### Check it out [here](https://wllm-chndlr.github.io/GIFgrub/)
 
-##### Created with Javascript, jQuery, AJAX, Giphy, Bootstrap, CSS, and HTML
+##### Created in 2017 with Javascript, jQuery, AJAX, Giphy, Bootstrap, CSS, and HTML
 
 ![app screenshot](assets/images/gifgrub.png)
