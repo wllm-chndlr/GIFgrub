@@ -1,111 +1,138 @@
 <!DOCTYPE html>
 
 <html lang="en-us">
+    <head>
+        <meta charset="UTF-8" />
 
-  <head>
-    
-    <meta charset="UTF-8">
-    
-    <title>GIFgrub</title>
-    
-    <!-- link to Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    
-    <!-- link to Google font -->
-    <link href="https://fonts.googleapis.com/css?family=Aldrich" rel="stylesheet">
+        <title>GIFgrub</title>
 
-    <!-- Font Awesome CSS Icons -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    
-    <!-- link to my css -->
-    <link rel="stylesheet" href="assets/css/style.css">
+        <!-- link to Bootstrap -->
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+            crossorigin="anonymous"
+        />
 
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <!-- <link rel="icon" href="/favicon.ico" type="image/x-icon"> -->
-    
-  </head>
+        <!-- link to Google font -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Aldrich"
+            rel="stylesheet"
+        />
 
-  <body>
+        <!-- Font Awesome CSS Icons -->
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+        />
 
-    <div class="container">
+        <!-- link to my css -->
+        <link rel="stylesheet" href="assets/css/style.css" />
 
-      <div class="page-header">
-        
-        <h1 id="header"><a href="index.html">GIFgrub </a><small>lotta eats</small></h1>
-        
-      </div>
+        <link
+            rel="shortcut icon"
+            href="assets/images/favicon.ico"
+            type="image/x-icon"
+        />
+    </head>
 
-      <div class="row">
-
-        <div class="col-md-12 btns">
-
-          <!-- Rendered buttons will display here -->
-          <div id="buttons-view"></div>
-
-        </div>
-
-      </div>
-
-      <div class="row">
-
-        <div class="col-md-12">
-          <button type="button" class="btn btn-warning" id="work" data-toggle="modal" data-target=".bs-example-modal-sm">how's this work?</button>
-        </div>
-
-          <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-            <div class="modal-dialog modal-sm" role="document">
-              <div class="modal-content">
-                <p>Click on a grub category button to view some awesome GIFs. Click on a GIF to activate; click again to stop. You can
-                  also add your own food category via the text input.</p>
-              </div>
+    <body>
+        <div class="container">
+            <div class="page-header">
+                <h1 id="header">
+                    <a href="index.html">GIFgrub </a>
+                    <!-- <small>lotta eats</small> -->
+                </h1>
             </div>
-          </div>
 
-        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12 btns">
+                    <!-- Rendered buttons will display here -->
+                    <div id="buttons-view"></div>
+                </div>
+            </div>
 
-          <form id="grub-form">
+            <div class="row">
+                <div class="col-md-12">
+                    <button
+                        type="button"
+                        id="work"
+                        data-toggle="modal"
+                        data-target=".bs-example-modal-sm"
+                    >
+                        how's this work?
+                    </button>
+                </div>
 
-          <label for="grub-input"></label>
-          <input type="text" id="grub-input">
+                <div
+                    class="modal fade bs-example-modal-sm"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="mySmallModalLabel"
+                >
+                    <div class="modal-dialog modal-sm" role="document">
+                        <div class="modal-content">
+                            <p>
+                                Click on a grub category button to view some
+                                awesome GIFs. Click on a GIF to activate; click
+                                again to stop. You can also add your own food
+                                category via the text input.
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-          <!-- Button adds new GIF -->
-          <input id="add-grub" class="btn-success" type="submit" value="add more grub">
+                <div class="col-md-12">
+                    <form id="grub-form">
+                        <label for="grub-input"></label>
+                        <input type="text" id="grub-input" />
 
-          </form>
+                        <!-- Button adds new GIF -->
+                        <input
+                            id="add-grub"
+                            type="submit"
+                            value="add more grub"
+                        />
+                    </form>
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- GIFs will display here -->
+                    <div id="gifs-view"></div>
+                </div>
+            </div>
+
+            <div class="footer navbar-fixed-bottom">
+                <footer>
+                    <h5>
+                        <small
+                            >Made by William Chandler
+                            <i class="fa fa-empire"></i
+                        ></small>
+                    </h5>
+                </footer>
+            </div>
         </div>
 
-      </div>
+        <!-- link to jQuery -->
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+        ></script>
 
-      <div class="row">
+        <!-- link to Bootstrap JS -->
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"
+        ></script>
 
-        <div class="col-md-12">
-
-          <!-- GIFs will display here -->
-          <div id="gifs-view"></div>
-
-        </div>
-
-      </div>
-
-      <div class="footer navbar-fixed-bottom">
-          <footer>
-              <h5><small>Made by William Chandler <i class="fa fa-empire"></i></small></h5>
-          </footer>
-      </div>
-
-    </div>
-    
-    <!-- link to jQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <!-- link to Bootstrap JS -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-      crossorigin="anonymous"></script>
-
-    <!-- link to Javascript -->
-    <script type="text/javascript" src="assets/javascript/script.js"></script>
-    
-  </body>
-
+        <!-- link to Javascript -->
+        <script
+            type="text/javascript"
+            src="assets/javascript/script.js"
+        ></script>
+    </body>
 </html>

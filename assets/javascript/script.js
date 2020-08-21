@@ -1,20 +1,18 @@
 // Array of different foods
-var comida = ["pizza", "bacon", "tacos", "sandwich", "queso", "nachos", "BBQ", "cheese", "sausage"];
+const comida = ["pizza", "bacon", "tacos", "sandwich", "queso", "nachos", "BBQ", "cheese", "sausage"];
 
 // This function renders buttons for all the items in the array
 function renderButtons() {
-
   // Delete existing comida before adding new comida
   $("#buttons-view").empty();
 
   // Looping through the array of comida
-  for (var i = 0; i < comida.length; i++) {
-
+  for (let i = 0; i < comida.length; i++) {
     // Generate buttons for all the grub in the array
-    var newBtn = $("<button>");
+    let newBtn = $("<button>");
 
     // Add a class of grub to our button
-    newBtn.addClass("grub btn-info");
+    newBtn.addClass("grub");
 
     // Add a data attribute
     newBtn.attr("data-name", comida[i]);
@@ -24,37 +22,32 @@ function renderButtons() {
 
     //Add button to the buttons-view div
     $("#buttons-view").append(newBtn);
-
   }
-
 }
 
 // This function displays GIFs and ratings based on button clicked
 function displayGIFs() {
-  
   // Empty gifs-view div before dynamically adding new GIFs
   $("#gifs-view").empty();
 
-  var grub = $(this).attr("data-name");
-  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + grub + "&api_key=b4b3b21c358b416d81cfdb99df5b34fd&limit=10";
+  const grub = $(this).attr("data-name");
+  const queryURL = `https://api.giphy.com/v1/gifs/search?q=${grub}&api_key=b4b3b21c358b416d81cfdb99df5b34fd&limit=10`;
 
   // Create AJAX call for specific grub button being clicked
   $.ajax({
     url: queryURL,
     method: "GET"
-  }).done(function(response) {
-
-    for (var j = 0; j < 10; j++) {
-
+  }).done(response => {
+    for (let j = 0; j < 10; j++) {
       // Creating a div to hold the GIFs
-      var gifDiv = $("<div class='col-md-5 rect'>");
+      const gifDiv = $("<div class='col-md-5 rect'>");
 
       // Retrieving the GIFs
-      var gifImage = response.data[j].images.fixed_height_still.url;
-      var gifAction = response.data[j].images.fixed_height.url;
-      
+      const gifImage = response.data[j].images.fixed_height_still.url;
+      const gifAction = response.data[j].images.fixed_height.url;
+
       // Creating an element to hold the GIFs
-      var gifDisplay = $("<img>").attr({
+      const gifDisplay = $("<img>").attr({
         "src": gifImage,
         "data-still": gifImage,
         "data-animate": gifAction,
@@ -66,52 +59,46 @@ function displayGIFs() {
       gifDiv.append(gifDisplay);
 
       // Storing the rating data
-      var rating = response.data[j].rating;
+      const rating = response.data[j].rating;
 
       // Creating an element to display rating
-      var elem1 = $("<p>").text("Rating: " + rating.toUpperCase());
+      const elem1 = $("<p>").text("Rating: " + rating.toUpperCase());
 
       // Displaying the rating
       gifDiv.append(elem1);
 
       // Putting the GIF div above the previous GIFs
       $("#gifs-view").prepend(gifDiv);
-
     }
-
   });
-  
 }
 
 // This function starts/stops GIFs on click
 function changeState() {
-
   // Grab the data-state of clicked image
   var state = $(this).attr("data-state");
 
   // If the clicked image's state is still, update its src attribute to what its data-animate value is. Then, set the image's data-state to animate.
-  // Else set src to the data-still value.
   if (state === "still") {
     $(this).attr("src", $(this).attr("data-animate"));
     $(this).attr("data-state", "animate");
+  // Else set src to the data-still value.
   } else {
     $(this).attr("src", $(this).attr("data-still"));
     $(this).attr("data-state", "still");
   }
-
 }
 
 // This function grabs user input to create new button
 $("#add-grub").on("click", function(event) {
-
   // Prevent page from reloading upon user submit
   event.preventDefault();
 
   // This line grabs the input from the text box
-  var grub = $("#grub-input").val().trim();
+  const grub = $("#grub-input").val().trim();
 
   // Check length of user input
-  var inputLength = grub.length;
+  const inputLength = grub.length;
 
   // If user input not blank, add grub from text box to array
   if (inputLength > 0) {
@@ -123,7 +110,6 @@ $("#add-grub").on("click", function(event) {
 
   // Clear input box after user input submitted
   $("#grub-input").val("");
-
 });
 
 // Add a click event listener to all elements with class "grub"
