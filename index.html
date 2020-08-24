@@ -38,11 +38,23 @@
 
     <body>
         <div class="container">
-            <div class="page-header">
-                <h1 id="header">
-                    <a href="index.html">GIFgrub </a>
-                    <!-- <small>lotta eats</small> -->
-                </h1>
+            <div class="header">
+                <a
+                    class="title"
+                    href="index.html"
+                >
+                    GIFgrub
+                </a>
+
+                <button
+                    class="how-dis-work"
+                    type="button"
+                    id="work"
+                    data-toggle="modal"
+                    data-target=".bs-example-modal-sm"
+                >
+                    how's this work?
+                </button>
             </div>
 
             <div class="row">
@@ -53,17 +65,6 @@
             </div>
 
             <div class="row">
-                <div class="col-md-12">
-                    <button
-                        type="button"
-                        id="work"
-                        data-toggle="modal"
-                        data-target=".bs-example-modal-sm"
-                    >
-                        how's this work?
-                    </button>
-                </div>
-
                 <div
                     class="modal fade bs-example-modal-sm"
                     tabindex="-1"
@@ -97,14 +98,14 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row gif-container">
                 <div class="col-md-12">
                     <!-- GIFs will display here -->
                     <div id="gifs-view"></div>
                 </div>
             </div>
 
-            <div class="footer navbar-fixed-bottom">
+            <div class="footer navbar-sticky-bottom">
                 <footer>
                     <h5>
                         <small
